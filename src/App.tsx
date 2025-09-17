@@ -114,7 +114,7 @@ const EtherWallet = () => {
           valueInEth: ethers.formatEther(tx.value), //eth单位转换
           gasPriceInGwei: ethers.formatUnits(tx.gasPrice, 'gwei') //转换价格
         };
-        debugger
+        
         console.log(enrichedTx,'----信息info')
         setBlockData(enrichedTx);
 
