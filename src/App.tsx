@@ -7,8 +7,7 @@ const EtherWallet = () => {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<any>(null);
   const [logs, setLogs] = useState<any[]>([]);
-  const [successProvider, setSuccessProvider] = useState(null);
-  const [connectedProvider, setConnectedProvider] = useState<any>({});
+
   const hasFetched = useRef<boolean>(false);
   const abortController = useRef(null);
   const addLog = (message: string) => {
@@ -18,7 +17,6 @@ const EtherWallet = () => {
     ]);
   };
   const getTx = async () => {
-    debugger;
     if (hasFetched.current) {
       addLog("已经在请求中");
       return;
@@ -79,8 +77,9 @@ const EtherWallet = () => {
           addLog("provider");
           provider = testProvider; //保存可用的providr,用户rpc连接
           console.log(provider, "__provider");
+          break;
 
-          setConnectedProvider(providerInfo); //设置界面渲染点信息
+          ; //设置界面渲染点信息
         } catch (error) {
           continue;
         }
@@ -120,6 +119,7 @@ const EtherWallet = () => {
         setBlockData(enrichedTx);
 
         addLog('📊 数据处理完成！');
+    
       } catch (error) {}
     } catch (error: any) {
       setError(error.message || error.toString(""));
